@@ -165,7 +165,9 @@ int main(int argc, char **argv)
                 }
             }
             if (!QSystemTrayIcon::isSystemTrayAvailable() && desktopSession != "ubuntu") {
-                app.showSettingsDialog();
+                if (!app.runInBackground()) {
+                  app.showSettingsDialog();
+                }
             }
         }
     }
